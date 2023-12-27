@@ -7,7 +7,6 @@ import { useDispatch } from 'react-redux';
 import Home from './components/pages/Home/Home';
 
 function App() {
-  
   const dispatch = useDispatch();
 
   // fetch products from server and add them to redux state

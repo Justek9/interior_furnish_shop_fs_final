@@ -5,6 +5,22 @@ export const getAllProducts = ({ products }) => {
   return products;
 };
 
+export const getImgs = ({ products }, id) => {
+  const imgs = products
+    .filter((product) => product.id === id)
+    .flatMap((product) => product.imgs.map((img) => `${img.photo}`));
+
+  return imgs;
+};
+
+export const getMainIMG = ({ products }, id) => {
+  const img = products
+    .filter((product) => product.id === id)
+    .flatMap((product) => product.imgs.map((img) => `${img.photo}`))[0];
+
+  return img;
+};
+
 // actions
 const createActionName = (actionName) => `app/products/${actionName}`;
 const LOAD_PRODUCTS = createActionName('LOAD_PRODUCTS ');
