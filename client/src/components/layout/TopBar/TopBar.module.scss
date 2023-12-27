@@ -1,0 +1,62 @@
+@import '../../../styles/settings.scss';
+
+.headerTop {
+  border-bottom: 2px solid black;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .headerLogo {
+    img {
+      width: 200px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  .headerMenu {
+    display: flex;
+
+    .btnIcon {
+      background-color: white;
+      border: none;
+      padding: 1rem 0.5rem 1rem 1rem;
+      &:hover {
+        color: $color-primary;
+      }
+    }
+
+    .cartBox {
+      display: inline-block;
+      position: relative;
+      color: $color-text-dark;
+    }
+
+    span {
+      &:hover {
+        cursor: pointer;
+        color: $color-primary;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .headerTop {
+    margin-top: 1rem;
+    flex-direction: column;
+
+    .headerMenu {
+      display: flex;
+    }
+  }
+}
+
+@media (max-width: 376px) {
+  .headerTop {
+    .headerMenu {
+      flex-direction: column;
+    }
+  }
+}

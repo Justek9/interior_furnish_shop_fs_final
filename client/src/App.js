@@ -5,6 +5,7 @@ import { fetchProducts } from './redux/productsRedux';
 import { useDispatch } from 'react-redux';
 
 import Home from './components/pages/Home/Home';
+import Header from './components/layout/Header/Header';
 
 function App() {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ function App() {
 
   return (
     <Container>
+      <Header />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/shop" element={<Home />}></Route>

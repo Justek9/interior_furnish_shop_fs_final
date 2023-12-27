@@ -27,10 +27,16 @@ body {
 }
 .nav-link {
   color: $color-primary;
+  margin: 0.5rem;
+  &:hover {
+    font-weight: bold;
+  }
 }
+
 a,
 a:hover,
-a:visited {
+a:visited,
+a:active {
   text-decoration: none;
   color: $color-text-dark;
 }
