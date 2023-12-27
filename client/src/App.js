@@ -1,8 +1,18 @@
+import { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
+import { fetchProducts } from './redux/productsRedux';
+import { useDispatch } from 'react-redux';
+
 import Home from './components/pages/Home/Home';
 
 function App() {
+  
+  const dispatch = useDispatch();
+
+  // fetch products from server and add them to redux state
+  useEffect(() => dispatch(fetchProducts()), [dispatch]);
+
   return (
     <Container>
       <Routes>
