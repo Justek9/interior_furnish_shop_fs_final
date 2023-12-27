@@ -111,152 +111,152 @@ function getImgs() {
   return [
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17256',
-      photo: './assets/prod1 (1).jpg',
+      photo: 'prod1 (1).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17256',
-      photo: './assets/prod1 (2).jpg',
+      photo: 'prod1 (2).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17256',
-      photo: './assets/prod1 (3).jpg',
+      photo: 'prod1 (3).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17257',
-      photo: './assets/prod2 (1).jpg',
+      photo: 'prod2 (1).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17257',
-      photo: './assets/prod2 (2).jpg',
+      photo: 'prod2 (2).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17257',
-      photo: './assets/prod2 (3).jpg',
+      photo: 'prod2 (3).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17258',
-      photo: './assets/prod3 (1).jpg',
+      photo: 'prod3 (1).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17258',
-      photo: './assets/prod3 (2).jpg',
+      photo: 'prod3 (2).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17258',
-      photo: './assets/prod3 (3).jpg',
+      photo: 'prod3 (3).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17259',
-      photo: './assets/prod4 (1).jpg',
+      photo: 'prod4 (1).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17259',
-      photo: './assets/prod4 (2).jpg',
+      photo: '.prod4 (2).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17259',
-      photo: './assets/prod4 (3).jpg',
+      photo: 'prod4 (3).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17260',
-      photo: './assets/prod5 (1).jpg',
+      photo: 'prod5 (1).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17260',
-      photo: './assets/prod5 (2).jpg',
+      photo: 'prod5 (2).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17260',
-      photo: './assets/prod5 (3).jpg',
+      photo: 'prod5 (3).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17261',
-      photo: './assets/prod6 (1).jpg',
+      photo: 'prod6 (1).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17261',
-      photo: './assets/prod6 (2).jpg',
+      photo: 'prod6 (2).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17261',
-      photo: './assets/prod6 (3).jpg',
+      photo: 'prod6 (3).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17262',
-      photo: './assets/prod7 (1).jpg',
+      photo: 'prod7 (1).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17262',
-      photo: './assets/prod7 (2).jpg',
+      photo: 'prod7 (2).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17262',
-      photo: './assets/prod7 (3).jpg',
+      photo: 'prod7 (3).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17263',
-      photo: './assets/prod8 (1).jpg',
+      photo: 'prod8 (1).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17263',
-      photo: './assets/prod8 (2).jpg',
+      photo: 'prod8 (2).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17263',
-      photo: './assets/prod8 (3).jpg',
+      photo: 'prod8 (3).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17264',
-      photo: './assets/prod9 (1).jpg',
+      photo: 'prod9 (1).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17264',
-      photo: './assets/prod9 (2).jpg',
+      photo: 'prod9 (2).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17264',
-      photo: './assets/prod9 (3).jpg',
+      photo: 'prod9 (3).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17265',
-      photo: './assets/prod10 (1).jpg',
+      photo: 'prod10 (1).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17265',
-      photo: './assets/prod10 (2).jpg',
+      photo: 'prod10 (2).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17265',
-      photo: './assets/prod10 (3).jpg',
+      photo: 'prod10 (3).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17266',
-      photo: './assets/prod11 (1).jpg',
+      photo: 'prod11 (1).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17266',
-      photo: './assets/prod11 (2).jpg',
+      photo: 'prod11 (2).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17266',
-      photo: './assets/prod11 (3).jpg',
+      photo: 'prod11 (3).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17267',
-      photo: './assets/prod12 (1).jpg',
+      photo: 'prod12 (1).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17267',
-      photo: './assets/prod12 (2).jpg',
+      photo: 'prod12 (2).jpg',
     },
     {
       productId: 'fd105551-0f0d-4a9f-bc41-c559c8a17267',
-      photo: './assets/prod12 (3).jpg',
+      photo: 'prod12 (3).jpg',
     },
   ];
 }
 async function seed() {
-  //   await db.product.deleteMany();
+  // await db.productImgs.deleteMany();
 
   await Promise.all(
     getProducts().map((product) => {
