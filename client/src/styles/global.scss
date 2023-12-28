@@ -40,3 +40,9 @@ a:active {
   text-decoration: none;
   color: $color-text-dark;
 }
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
