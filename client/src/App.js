@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 
 import Home from './components/pages/Home/Home';
 import Header from './components/layout/Header/Header';
+import AboutUs from './components/pages/AboutUs/AboutUs';
 
 function App() {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/shop" element={<Home />}></Route>
+        <Route path="/about" element={<AboutUs />}></Route>
       </Routes>
     </Container>
   );
