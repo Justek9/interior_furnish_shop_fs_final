@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { API_URL } from '../../../config';
 import Button from '../../common/Button/Button';
 import LoadingSpinner from '../../common/LoadingSpinner/LoadingSpinner';
+import ShowGallerySlider from '../../views/ShowGallerySlider/ShowGallerySlider';
 
 import styles from './ProductDetails.module.scss';
 
@@ -69,7 +70,7 @@ const ProductDetails = () => {
 
   return (
     <Container>
-      {/* add picture */}
+      <ShowGallerySlider id={id} />
       <div className={styles.card}>
         <Card.Body>
           <Card.Title>{productToShow.name}</Card.Title>
