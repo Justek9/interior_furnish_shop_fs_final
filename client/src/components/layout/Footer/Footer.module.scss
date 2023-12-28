@@ -55,3 +55,22 @@
   }
 }
 
+@media (max-width: 567px) {
+  .root {
+    height: 700px;
+
+    .topContainer {
+      flex-direction: column;
+
+      .subMenu {
+        p {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+
+    .bottomContainer {
+      flex-direction: column;
+    }
+  }
+}
