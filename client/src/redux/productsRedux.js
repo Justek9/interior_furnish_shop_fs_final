@@ -44,6 +44,7 @@ export const fetchProducts = () => {
   };
 };
 
+
 const productsReducer = (statePart = [], action) => {
   switch (action.type) {
     case LOAD_PRODUCTS:

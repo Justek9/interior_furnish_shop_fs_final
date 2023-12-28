@@ -1,0 +1,43 @@
+@import '../../../styles/settings.scss';
+
+.card {
+  width: 80%;
+  max-width: 100vw;
+  height: auto;
+  margin: 2rem auto;
+  .btnContaier {
+    padding: 16px;
+  }
+
+  .btnRemarks {
+    border: none;
+    background-color: white;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .remarks {
+    width: 60%;
+  }
+
+  .qtyBtn {
+    border: none;
+    background-color: white;
+    color: $color-primary;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+  }
+
+  .qtyInput {
+    width: 50px;
+    text-align: center;
+    padding: 0.2rem;
+    border-color: $color-primary;
+
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+    &:focus {
+      outline-color: $color-primary;
+    }
+  }
+}

@@ -9,6 +9,9 @@ import AboutUs from './components/pages/AboutUs/AboutUs';
 import Footer from './components/layout/Footer/Footer';
 import ContentContainer from './components/views/ContentContainer/ContentContainer';
 import PageContainer from './components/views/PageContainer/PageContainer';
+import SearchPage from './components/pages/SearchPage/SearchPage';
+import SearchResults from './components/features/SearchResults/SearchResults';
+import ProductDetails from './components/features/ProductDetails/ProductDetails';
 
 function App() {
   const dispatch = useDispatch();
@@ -23,7 +26,13 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/shop" element={<Home />}></Route>
+          <Route path="/products/:id" element={<ProductDetails />}></Route>
           <Route path="/about" element={<AboutUs />}></Route>
+          <Route path="/search" element={<SearchPage />}></Route>
+          <Route
+            path="/search/:searchPhrase"
+            element={<SearchResults />}
+          ></Route>
         </Routes>
       </ContentContainer>
       <Footer />

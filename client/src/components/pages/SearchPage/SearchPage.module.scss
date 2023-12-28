@@ -1,0 +1,16 @@
+@import '../../../styles/settings.scss';
+
+.inputSearch {
+  padding: 13px 24px 13px 48px;
+  line-height: 24px;
+  font-size: 17px;
+  border: 1px solid $color-primary-light;
+  border-radius: 30px;
+  height: auto;
+  font-family: $font-family;
+  background-color: $color-background;
+  width: 40%;
+  &:focus {
+    outline: 2px solid $color-primary;
+  }
+}
