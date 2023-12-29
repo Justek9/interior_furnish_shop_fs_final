@@ -25,6 +25,8 @@ body {
   font-weight: bold;
   color: $color-primary;
 }
+
+// nav and links
 .nav-link {
   color: $color-primary;
   margin: 0.5rem;
@@ -41,12 +43,49 @@ a:active {
   color: $color-text-dark;
 }
 
+// flex
 .flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+// login, register, address inputs
+.inputContainer {
+  position: relative;
+  margin-bottom: 25px;
+}
+.inputContainer label {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-size: 16px;
+  color: $color-text-dark;
+  transition: all 0.5s ease-in-out;
+}
+.inputContainer input {
+  border: 0;
+  border-bottom: 2px solid $color-text-dark;
+  background: transparent;
+  width: 100%;
+  padding: 8px 0 8px 0;
+  font-size: 20px;
+  color: $color-text-dark;
+}
+.inputContainer input:focus {
+  border: none;
+  outline: none;
+  border-bottom: 2px solid $color-primary;
+}
+
+.inputContainer input:focus ~ label,
+.inputContainer input:valid ~ label {
+  top: -22px;
+  font-size: 16px;
+  color: $color-primary;
+}
+
+// nav rwd
 @media (max-width: 991px) {
   #responsive-nav {
     width: 90vw;

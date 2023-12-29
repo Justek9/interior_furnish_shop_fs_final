@@ -13,6 +13,7 @@ import SearchPage from './components/pages/SearchPage/SearchPage';
 import SearchResults from './components/features/SearchResults/SearchResults';
 import ProductDetails from './components/features/ProductDetails/ProductDetails';
 import Contact from './components/pages/Contact/Contact';
+import Login from './components/pages/LoginPage/Login';
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ function App() {
             element={<SearchResults />}
           ></Route>
           <Route path="/contact" element={<Contact />}></Route>
+          <Route path="/login" element={<Login />}></Route>
         </Routes>
       </ContentContainer>
       <Footer />
