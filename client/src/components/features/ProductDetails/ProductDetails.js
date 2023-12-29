@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { API_URL } from '../../../config';
 import Button from '../../common/Button/Button';
 import LoadingSpinner from '../../common/LoadingSpinner/LoadingSpinner';
-import ShowGallerySlider from '../../views/ShowGallerySlider/ShowGallerySlider';
+import ShowGallerySlider from '../../views/GallerySliderContainer/GallerySliderContainer';
 
 import styles from './ProductDetails.module.scss';
 

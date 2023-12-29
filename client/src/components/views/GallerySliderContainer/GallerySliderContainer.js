@@ -2,9 +2,9 @@ import { useSelector } from 'react-redux';
 import { getImgs } from '../../../redux/productsRedux';
 import GallerySlider from '../../features/GallerySlider/GallerySlider';
 
-import styles from './ShowGallerySlider.module.scss';
+import styles from './GallerySliderContainer.module.scss';
 
-const ShowGallerySlider = ({ id }) => {
+const GallerySliderContainer = ({ id }) => {
   const slides = useSelector((state) => getImgs(state, id));
 
   return (
@@ -14,4 +14,4 @@ const ShowGallerySlider = ({ id }) => {
   );
 };
 
-export default ShowGallerySlider;
+export default GallerySliderContainer;

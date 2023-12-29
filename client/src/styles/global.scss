@@ -46,3 +46,12 @@ a:active {
   justify-content: center;
   align-items: center;
 }
+
+@media (max-width: 991px) {
+  #responsive-nav {
+    width: 90vw;
+  }
+  .dropdown-menu {
+    width: 90%;
+  }
+}

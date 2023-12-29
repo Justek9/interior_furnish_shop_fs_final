@@ -14,3 +14,10 @@
     outline: 2px solid $color-primary;
   }
 }
+
+@media (max-width: 767px) {
+  .inputSearch {
+    width: 90%;
+    margin-bottom: 2rem;
+  }
+}

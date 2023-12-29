@@ -12,6 +12,7 @@ import PageContainer from './components/views/PageContainer/PageContainer';
 import SearchPage from './components/pages/SearchPage/SearchPage';
 import SearchResults from './components/features/SearchResults/SearchResults';
 import ProductDetails from './components/features/ProductDetails/ProductDetails';
+import Contact from './components/pages/Contact/Contact';
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ function App() {
             path="/search/:searchPhrase"
             element={<SearchResults />}
           ></Route>
+          <Route path="/contact" element={<Contact />}></Route>
         </Routes>
       </ContentContainer>
       <Footer />

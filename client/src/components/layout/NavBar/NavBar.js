@@ -12,7 +12,7 @@ const NavBar = () => {
         className="pt-2 pt-lg-3 px-4 px-lg-5"
       >
         <NavDropdown title="SHOP" id="basic-nav-dropdown">
-          <NavDropdown.Item as={NavLink} to="/shop/new">
+          <NavDropdown.Item as={NavLink} to="/shop/new" className="w-100">
             New
           </NavDropdown.Item>
           <NavDropdown.Divider />
@@ -25,7 +25,7 @@ const NavBar = () => {
           </NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item as={NavLink} to="/shop/accessories">
-            Accessories
+            Cube organizers
           </NavDropdown.Item>
         </NavDropdown>
         <Nav.Link className="text-uppercase" as={NavLink} to="/about">
