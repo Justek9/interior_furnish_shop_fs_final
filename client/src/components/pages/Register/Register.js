@@ -10,8 +10,8 @@ const Register = () => {
       </p>
       <form>
         <div className="inputContainer">
-          <input required />
-          <label>Username</label>
+          <input type="email" required />
+          <label>Email</label>
         </div>
         <div className="inputContainer">
           <input required type="password" />

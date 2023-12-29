@@ -6,8 +6,8 @@ const Login = () => {
       <h2>Log in</h2>
       <form>
         <div className="inputContainer">
-          <input required />
-          <label>Username</label>
+          <input type="email" required />
+          <label>Emai</label>
         </div>
         <div className="inputContainer">
           <input required type="password" />

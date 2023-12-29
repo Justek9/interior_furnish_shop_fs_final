@@ -15,13 +15,30 @@ model Product {
   isNew Boolean
   category String
   imgs ProductImgs[]
-   
-}
+ }
 
 model ProductImgs {
   id String @id @default(uuid())
   photo String
   product Product @relation(fields:[productId], references: [id])
   productId String
+}
 
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id       String    @id @default(uuid())
+  email    String    @unique
+  role     Role      @default(USER)
+  password Password?
+}
+
+model Password {
+  id       String @id @default(uuid())
+  hashedPassword String
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId   String @unique
 }
