@@ -21,6 +21,20 @@ export const getMainIMG = ({ products }, id) => {
   return img;
 };
 
+export const getNewProducts = ({ products }) => {
+  return products.filter((product) => product.isNew === true);
+};
+
+export const getShelves = ({ products }) => {
+  return products.filter((product) => product.category === 'shelves');
+};
+
+export const getCubes = ({ products }) => {
+  return products.filter(
+    (product) => product.category === 'storage organizers',
+  );
+};
+
 // actions
 const createActionName = (actionName) => `app/products/${actionName}`;
 const LOAD_PRODUCTS = createActionName('LOAD_PRODUCTS ');
@@ -43,7 +57,6 @@ export const fetchProducts = () => {
       });
   };
 };
-
 
 const productsReducer = (statePart = [], action) => {
   switch (action.type) {

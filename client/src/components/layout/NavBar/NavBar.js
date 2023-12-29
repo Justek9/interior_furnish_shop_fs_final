@@ -20,11 +20,11 @@ const NavBar = () => {
             All
           </NavDropdown.Item>
           <NavDropdown.Divider />
-          <NavDropdown.Item as={NavLink} to="shop/clothes">
+          <NavDropdown.Item as={NavLink} to="shop/shelves">
             Shelves
           </NavDropdown.Item>
           <NavDropdown.Divider />
-          <NavDropdown.Item as={NavLink} to="/shop/accessories">
+          <NavDropdown.Item as={NavLink} to="/shop/cubes">
             Cube organizers
           </NavDropdown.Item>
         </NavDropdown>

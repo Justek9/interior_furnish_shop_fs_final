@@ -15,6 +15,7 @@ import ProductDetails from './components/features/ProductDetails/ProductDetails'
 import Contact from './components/pages/Contact/Contact';
 import Login from './components/pages/LoginPage/Login';
 import Register from './components/pages/Register/Register';
+import ProductByCategory from './components/pages/ProductByCategory/ProductByCategory';
 
 function App() {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/shop" element={<Home />}></Route>
+          <Route path="/shop/:category" element={<ProductByCategory />}></Route>
           <Route path="/products/:id" element={<ProductDetails />}></Route>
           <Route path="/about" element={<AboutUs />}></Route>
           <Route path="/search" element={<SearchPage />}></Route>
