@@ -14,6 +14,7 @@ import SearchResults from './components/features/SearchResults/SearchResults';
 import ProductDetails from './components/features/ProductDetails/ProductDetails';
 import Contact from './components/pages/Contact/Contact';
 import Login from './components/pages/LoginPage/Login';
+import Register from './components/pages/Register/Register';
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ function App() {
           ></Route>
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/register" element={<Register />}></Route>
         </Routes>
       </ContentContainer>
       <Footer />

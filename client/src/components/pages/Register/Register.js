@@ -1,9 +1,13 @@
 import Button from '../../common/Button/Button';
 
-const Login = () => {
+const Register = () => {
   return (
     <div className="flex-center flex-column">
-      <h2>Log in</h2>
+      <h2>Register</h2>
+      <p>
+        We highly encourage you to register to get 10% discont for regular
+        customers
+      </p>
       <form>
         <div className="inputContainer">
           <input required />
@@ -13,10 +17,14 @@ const Login = () => {
           <input required type="password" />
           <label>Password</label>
         </div>
-        <Button text="Login" />
+        <div className="inputContainer">
+          <input required type="password" />
+          <label>Confirm password</label>
+        </div>
+        <Button text="Register" />
       </form>
     </div>
   );
 };
 
-export default Login;
+export default Register;
