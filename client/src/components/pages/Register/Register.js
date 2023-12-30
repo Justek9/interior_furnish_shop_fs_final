@@ -50,7 +50,7 @@ const Register = () => {
       {status === 'serverError' && (
         <Alert variant="danger">
           <Alert.Heading>Something went wrong...</Alert.Heading>
-          <p>Make sure all the fields are filled and try agai!.</p>
+          <p>Make sure all the fields are filled correctly and try agai!.</p>
         </Alert>
       )}
       <p>
