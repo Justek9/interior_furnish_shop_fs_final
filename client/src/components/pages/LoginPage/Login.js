@@ -1,16 +1,108 @@
+import { useState } from 'react';
+import { API_URL } from '../../../config';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
 import Button from '../../common/Button/Button';
+import LoadingSpinner from '../../common/LoadingSpinner/LoadingSpinner';
+import { Alert } from 'react-bootstrap';
+import { loginUser } from '../../../redux/userRedux';
 
 const Login = () => {
+  const [loginData, setLoginData] = useState({ login: '', password: '' });
+  const [status, setStatus] = useState(null);
+  // null, 'loading', 'success', 'serverError', 'clientError'
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(loginData),
+    };
+
+    setStatus('loading');
+    fetch(`${API_URL}/auth/login`, options)
+      .then((res) => {
+        console.log(res);
+        if (res.status === 201) {
+          setStatus('success');
+          return res.json();
+        } else if (res.status === 400) {
+          setStatus('clientError');
+        } else if (res.status === 401) {
+          setStatus('loginError');
+        } else {
+          setStatus('serverError');
+        }
+      })
+      .then((user) => {
+        console.log(user);
+        dispatch(loginUser(user));
+        setStatus('success');
+        navigate('/');
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="flex-center flex-column">
       <h2>Log in</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
+        {status === 'success' && (
+          <Alert variant="success">
+            <Alert.Heading>Success!</Alert.Heading>
+            <p>You have been successfully logged in.</p>
+          </Alert>
+        )}
+
+        {status === 'serverError' && (
+          <Alert variant="danger">
+            <Alert.Heading>Something went wrong...</Alert.Heading>
+            <p>Try again!.</p>
+          </Alert>
+        )}
+
+        {status === 'clientError' && (
+          <Alert variant="danger">
+            <Alert.Heading>No enough data</Alert.Heading>
+            <p>You have to fill in all the fields.</p>
+          </Alert>
+        )}
+
+        {status === 'loginError' && (
+          <Alert variant="danger">
+            <Alert.Heading>Incorrect data </Alert.Heading>
+            <p>Login or password is incorrect</p>
+          </Alert>
+        )}
+        {status === 'loading' && <LoadingSpinner />}
         <div className="inputContainer">
-          <input type="email" required />
+          <input
+            type="email"
+            value={loginData.email}
+            onChange={(e) =>
+              setLoginData({ ...loginData, email: e.target.value })
+            }
+            required
+          />
           <label>Emai</label>
         </div>
         <div className="inputContainer">
-          <input required type="password" />
+          <input
+            required
+            type="password"
+            value={loginData.password}
+            onChange={(e) =>
+              setLoginData({ ...loginData, password: e.target.value })
+            }
+          />
           <label>Password</label>
         </div>
         <Button text="Login" />

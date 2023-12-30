@@ -21,20 +21,12 @@ export class AuthController {
     return this.authService.register(registerData);
   }
 
-  // @UseGuards(LocalAuthGuard)
-  // @Post('login')
-  // async login(@Request() req) {
-  //   return req.user;
-  // }
-
   @UseGuards(LocalAuthGuard)
   @Post('login')
   async login(@Request() req, @Response() res) {
     const tokens = await this.authService.createSession(req.user);
     res.cookie('auth', tokens, { httpOnly: true });
-    res.send({
-      message: 'success',
-    });
+    res.send(req.user);
   }
 
   @UseGuards(JwtAuthGuard)
