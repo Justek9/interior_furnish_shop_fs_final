@@ -7,8 +7,12 @@ import {
 
 import styles from './TopBar.module.scss';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getUser } from '../../../redux/userRedux';
 
 const TopBar = () => {
+  const user = useSelector(getUser);
+
   return (
     <div className={styles.headerTop}>
       <div className={styles.headerLogo}>
@@ -26,12 +30,22 @@ const TopBar = () => {
           <button className={styles.btnIcon}>
             <FontAwesomeIcon icon={faUser} />
           </button>
-          <Link to="/login">
-            <span>Login </span>
-          </Link>
-          <Link to="/register">
-            <span>Register</span>
-          </Link>
+          {user && <span>You're logged in!</span>}
+          {!user && (
+            <Link to="/login">
+              <span>Login </span>
+            </Link>
+          )}
+          {!user && (
+            <Link to="/register">
+              <span>Register</span>
+            </Link>
+          )}
+          {user && (
+            <Link to="/logout">
+              <span> Log out</span>
+            </Link>
+          )}
         </div>
         <div>
           <Link to="/cart">

@@ -16,7 +16,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const options = {
@@ -30,7 +29,6 @@ const Login = () => {
     setStatus('loading');
     fetch(`${API_URL}/auth/login`, options)
       .then((res) => {
-        console.log(res);
         if (res.status === 201) {
           setStatus('success');
           return res.json();
@@ -43,12 +41,13 @@ const Login = () => {
         }
       })
       .then((user) => {
-        console.log(user);
         dispatch(loginUser(user));
         setStatus('success');
         navigate('/');
       })
-      .catch((err) => console.log(err));
+      .catch(() => {
+        setStatus('serverError');
+      });
   };
 
   return (
