@@ -1,6 +1,6 @@
 // selectors
-export const getIsError = ({ error }) => {
-	return error
+export const getIsError = ({ isError }) => {
+	return isError
 }
 
 // actions

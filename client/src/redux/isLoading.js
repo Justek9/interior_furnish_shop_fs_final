@@ -1,6 +1,6 @@
 // selectors
-export const getIsLoading = ({ loading }) => {
-	return loading
+export const getIsLoading = ({ isLoading }) => {
+	return isLoading
 }
 
 // actions

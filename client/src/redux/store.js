@@ -10,8 +10,8 @@ import isErrorReducer from './isError.js';
 const subReducers = {
   products: productsReducer,
   user: userReducer,
-  loading: isloadingReducer,
-  error: isErrorReducer,
+  isLoading: isloadingReducer,
+  isError: isErrorReducer,
 };
 
 const reducer = combineReducers(subReducers);

@@ -66,6 +66,13 @@ const ProductDetails = () => {
     }
   };
 
+  const [shake, setShake] = useState(false);
+
+  const animate = () => {
+    setShake(true);
+    setTimeout(() => setShake(false), 2000);
+  };
+
   if (!productToShow) return <LoadingSpinner />;
 
   return (
@@ -118,7 +125,12 @@ const ProductDetails = () => {
             </div>
           </form>
           <div className={styles.btnContaier}>
-            <Button text="Add to cart" />
+            <button
+              onClick={animate}
+              className={`${styles.btn} ${shake ? `${styles.shake}` : ''}`}
+            >
+              Add to cart
+            </button>
           </div>
         </Card.Body>
       </div>

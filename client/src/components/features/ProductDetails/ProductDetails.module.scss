@@ -40,4 +40,36 @@
       outline-color: $color-primary;
     }
   }
+
+  .btn {
+    width: 100px;
+    height: 50px;
+    background-color: $color-text-light;
+    border-radius: $radius;
+    color: $color-primary;
+    font-family: $font-family;
+    outline: none;
+    border: 2px solid $color-primary;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .shake {
+    animation: animate 0.4s;
+  }
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg) translate(0px);
+  }
+  25% {
+    transform: rotate(-20deg) translate(-10px);
+  }
+  5% {
+    transform: rotate(0deg) translate(0px);
+  }
+  100% {
+    transform: rotate(20deg) translate(10px);
+  }
 }

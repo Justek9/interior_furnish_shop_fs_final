@@ -21,12 +21,14 @@ const TopBar = () => {
         </Link>
       </div>
       <div className={styles.headerMenu}>
-        <Link to="/search">
-          <button className={styles.btnIcon}>
-            <FontAwesomeIcon icon={faSearch} />
-          </button>
-        </Link>
-        <div>
+        <div className={styles.cart}>
+          <Link to="/search">
+            <button className={styles.btnIcon}>
+              <FontAwesomeIcon icon={faSearch} />
+            </button>
+          </Link>
+        </div>
+        <div className={styles.cart}>
           <button className={styles.btnIcon}>
             <FontAwesomeIcon icon={faUser} />
           </button>
@@ -47,13 +49,13 @@ const TopBar = () => {
             </Link>
           )}
         </div>
-        <div>
+        <div className={styles.cart}>
           <Link to="/cart">
             <button className={`${styles.btnIcon}`}>
               <FontAwesomeIcon icon={faShoppingBasket} />
             </button>
           </Link>
-          <span>Cart: 0</span>
+          <span className={styles.cartQty}>0</span>
         </div>
       </div>
     </div>
