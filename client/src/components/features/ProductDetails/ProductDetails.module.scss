@@ -57,6 +57,54 @@
   .shake {
     animation: animate 0.4s;
   }
+  .flyOutContainer {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    background-color: rgba(26, 25, 25, 0.9);
+    // text-align: center;
+    transition: all ease-in-out 0.25s;
+    z-index: 999;
+  }
+  .flyOut {
+    position: fixed;
+    top: 0;
+    width: 420px;
+    min-height: 100vh;
+    bottom: 0;
+    right: 0;
+    z-index: 10000;
+    background-color: $color-white-smoke;
+    visibility: hidden;
+    opacity: 0;
+    transition: $transition-flyer;
+    transform: translate(200px, 0);
+    -webkit-transform: translate(200px, 0);
+    box-shadow: 0px 0px 87px 0px rgba(0, 0, 0, 0.09);
+  }
+
+  .visible {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .flyoutContent {
+    height: 100%;
+    margin: 2rem;
+    z-index: 3000;
+    button {
+      margin: 1rem 0;
+      font-size: 0.7rem;
+      height: 30px;
+    }
+    p {
+      width: 150px;
+    }
+  }
 }
 
 @keyframes animate {
