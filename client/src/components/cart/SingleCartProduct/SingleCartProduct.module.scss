@@ -1,0 +1,27 @@
+@import '../../../styles/settings.scss';
+
+.qtyInput {
+  width: 50px;
+  text-align: center;
+  padding: 0.3rem;
+  border: 1px solid black;
+
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+  &:focus {
+    outline-color: $color-primary;
+  }
+}
+
+.qtyBtn {
+  border: none;
+  background-color: white;
+  color: $color-primary;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
+
+.row {
+  vertical-align: middle;
+}

@@ -1,9 +1,15 @@
 import { useEffect, useState } from 'react';
 import { Card, Container } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { API_URL } from '../../../config';
+import { addProduct, getAll, updateProduct } from '../../../redux/cartRedux';
+import {
+  decrementQty,
+  incrementQty,
+  onChangeHandler,
+} from '../../../utils/utils';
 import Button from '../../common/Button/Button';
-// import Button from '../../common/Button/Button';
 import LoadingSpinner from '../../common/LoadingSpinner/LoadingSpinner';
 import ShowGallerySlider from '../../views/GallerySliderContainer/GallerySliderContainer';
 
@@ -16,11 +22,9 @@ const ProductDetails = () => {
   const [qty, setQty] = useState(1);
   const [shake, setShake] = useState(false);
   const [showFlyer, setShowFlyer] = useState(false);
-
-  const handleShowRemarks = (e) => {
-    e.preventDefault();
-    setShowRemarks(!showRemarks);
-  };
+  const [remarks, setRemarks] = useState('');
+  const allCartProducts = useSelector((state) => getAll(state));
+  const dispatch = useDispatch();
 
   // fetch product by id
   useEffect(() => {
@@ -39,47 +43,43 @@ const ProductDetails = () => {
     fetchProductById();
   }, [id]);
 
-  // manage qty change
-  const maxQty = 1000;
-  const minQty = 1;
-
-  const onChangeHandler = (value) => {
-    if (value > maxQty) {
-      setQty(maxQty);
-    } else if (value < minQty) {
-      setQty(minQty);
-    } else {
-      setQty(value);
-    }
+  // show/hide input for remrks
+  const handleShowRemarks = (e) => {
+    e.preventDefault();
+    setShowRemarks(!showRemarks);
   };
 
-  const decrementQty = (e) => {
-    e.preventDefault();
-    if (qty > minQty) {
-      setQty(qty - 1);
-    }
+  // build cart product
+  const cartProduct = {
+    product: {
+      name: productToShow?.name,
+      price: productToShow?.price,
+      qty: qty,
+      remarks: remarks,
+    },
   };
 
-  const incrementQty = (e) => {
+  // add to cart: shake button, add product to cart, show flyout
+  const addToCartHandler = (e) => {
     e.preventDefault();
-    if (qty < maxQty) {
-      setQty(qty + 1);
-    } else if (qty > maxQty) {
-      setQty(maxQty);
-    }
-  };
-
-  const onAddToCartHandler = (e) => {
-    e.preventDefault();
+    console.log(cartProduct);
     setShake(true);
-    setShowFlyer(true);
     setTimeout(() => setShake(false), 2000);
+
+    // check if product is already in cart, if yes update cart, otherwise add to cart
+    allCartProducts.find((product) => product.name === cartProduct.name)
+      ? dispatch(updateProduct(cartProduct))
+      : dispatch(addProduct(cartProduct));
+
+    setShowFlyer(true);
   };
 
+  // hide flyout
   const hideFlyOutHandler = (e) => {
     e.preventDefault();
     setShowFlyer(false);
   };
+
   if (!productToShow) return <LoadingSpinner />;
 
   return (
@@ -104,6 +104,8 @@ const ProductDetails = () => {
               <textarea
                 placeholder="Write your remarks here..."
                 className={styles.remarks}
+                value={remarks}
+                onChange={(event) => setRemarks(event.target.value)}
               ></textarea>
             )}
           </div>
@@ -111,7 +113,10 @@ const ProductDetails = () => {
             <div className="py-1 my-1">
               <button
                 className={styles.qtyBtn}
-                onClick={(e) => decrementQty(e)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  decrementQty(qty, setQty);
+                }}
               >
                 -
               </button>
@@ -120,11 +125,16 @@ const ProductDetails = () => {
                 type="number"
                 name="qty"
                 value={qty}
-                onChange={onChangeHandler}
+                onChange={(e) => {
+                  onChangeHandler(e.target.value, setQty);
+                }}
                 className={styles.qtyInput}
               />
               <button
-                onClick={(e) => incrementQty(e)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  incrementQty(qty, setQty);
+                }}
                 className={styles.qtyBtn}
               >
                 +
@@ -133,7 +143,7 @@ const ProductDetails = () => {
           </form>
           <div className={styles.btnContaier}>
             <button
-              onClick={onAddToCartHandler}
+              onClick={addToCartHandler}
               className={`${styles.btn} ${shake ? `${styles.shake}` : ''}`}
             >
               Add to cart

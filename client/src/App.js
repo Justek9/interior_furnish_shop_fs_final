@@ -13,9 +13,9 @@ import Login from './components/pages/LoginPage/Login';
 import Register from './components/pages/Register/Register';
 import ProductByCategory from './components/pages/ProductByCategory/ProductByCategory';
 import Logout from './components/pages/Logout/Logout';
+import CartOverview from './components/cart/CartOverview/CartOverview';
 
 function App() {
-
   return (
     <PageContainer>
       <ContentContainer>
@@ -36,6 +36,7 @@ function App() {
           <Route path="/register" element={<Register />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/logout" element={<Logout />}></Route>
+          <Route path="/cart" element={<CartOverview />}></Route>
         </Routes>
       </ContentContainer>
       <Footer />
