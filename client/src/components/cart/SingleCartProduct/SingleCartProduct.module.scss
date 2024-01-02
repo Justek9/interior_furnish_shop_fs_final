@@ -1,5 +1,10 @@
 @import '../../../styles/settings.scss';
 
+.cartIMG {
+  height: 30px;
+  width: 50px;
+}
+
 .qtyInput {
   width: 50px;
   text-align: center;
@@ -24,4 +29,11 @@
 
 .row {
   vertical-align: middle;
+}
+
+.deleteBtn {
+  border: none;
+  color: $color-primary;
+  background-color: $color-text-light;
+  font-size: 0.8rem;
 }

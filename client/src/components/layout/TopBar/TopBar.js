@@ -9,9 +9,11 @@ import styles from './TopBar.module.scss';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getUser } from '../../../redux/userRedux';
+import { getTotalQty } from '../../../redux/cartRedux';
 
 const TopBar = () => {
-  const user = useSelector(getUser);
+  const user = useSelector((state) => getUser(state));
+  const totalCartQty = useSelector((state) => getTotalQty(state));
 
   return (
     <div className={styles.headerTop}>
@@ -55,7 +57,7 @@ const TopBar = () => {
               <FontAwesomeIcon icon={faShoppingBasket} />
             </button>
           </Link>
-          <span className={styles.cartQty}>0</span>
+          <span className={styles.cartQty}>{totalCartQty}</span>
         </div>
       </div>
     </div>

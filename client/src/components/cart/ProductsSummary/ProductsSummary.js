@@ -5,8 +5,9 @@ import styles from './ProductsSummary.module.scss';
 
 const ProductsSummary = () => {
   const shippingCost = 10;
-  const totalQty = useSelector(getTotalQty);
-  const totalAmount = useSelector(getTotalAmount) + shippingCost;
+  const totalQty = useSelector((state) => getTotalQty(state));
+  const totalAmount =
+    useSelector((state) => getTotalAmount(state)) + shippingCost;
 
   return (
     <div className="mt-4 mb-4">

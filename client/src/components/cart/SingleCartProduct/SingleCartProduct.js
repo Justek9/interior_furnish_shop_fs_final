@@ -1,17 +1,20 @@
 import styles from './SingleCartProduct.module.scss';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { deleteProduct, updateQty } from '../../../redux/cartRedux';
 import { useEffect, useState } from 'react';
-import Button from '../../common/Button/Button';
 import {
   decrementQty,
   incrementQty,
   onChangeHandler,
 } from '../../../utils/utils';
+import { getMainIMG } from '../../../redux/productsRedux';
+import { IMGS_URL } from '../../../config';
 
 const SingleCartProduct = ({ product }) => {
   const [qty, setQty] = useState(product.qty);
+  const img = useSelector((state) => getMainIMG(state, product.id));
+
   const dispatch = useDispatch();
 
   const handleDeleteProduct = () => {
@@ -24,53 +27,65 @@ const SingleCartProduct = ({ product }) => {
   }, [dispatch, product.name, qty]);
 
   return (
-    <tr className={styles.row}>
-      <td>
-        <img src={product.image} alt={product.name} />
-      </td>
-      <td>
-        <form>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              decrementQty(qty, setQty);
-            }}
-            className={styles.qtyBtn}
-          >
-            -
-          </button>
-          <input
-            required
-            type="number"
-            name="qty"
-            value={qty}
-            onChange={(e) => {
-              onChangeHandler(e.target.value, setQty);
-            }}
-            className={styles.qtyInput}
+    <>
+      <tr className={styles.row}>
+        <td>
+          <img
+            src={IMGS_URL + img}
+            alt={product.name}
+            className={styles.cartIMG}
           />
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              incrementQty(qty, setQty);
-            }}
-            className={styles.qtyBtn}
-          >
-            +
-          </button>
-        </form>
-      </td>
-      <td>$ {product.price * product.qty}</td>
+        </td>
+        <td>
+          <form>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                decrementQty(qty, setQty);
+              }}
+              className={styles.qtyBtn}
+            >
+              -
+            </button>
+            <input
+              required
+              type="number"
+              name="qty"
+              value={qty}
+              onChange={(e) => {
+                onChangeHandler(Number(e.target.value), setQty);
+              }}
+              className={styles.qtyInput}
+            />
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                incrementQty(qty, setQty);
+              }}
+              className={styles.qtyBtn}
+            >
+              +
+            </button>
+          </form>
+        </td>
+        <td>$ {product.price * product.qty}</td>
 
-      <td>
-        <Button
-          className="w-25"
-          onClick={handleDeleteProduct}
-          text="Delete"
-          color="grey"
-        ></Button>
-      </td>
-    </tr>
+        <td>
+          <button
+            className={`w-25 ${styles.deleteBtn}`}
+            onClick={handleDeleteProduct}
+            text="Delete"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+      {product.remarks && (
+        <tr>
+          <td>{product.remarks}</td>
+        </tr>
+      )}
+    </>
   );
 };
 

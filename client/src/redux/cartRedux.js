@@ -15,7 +15,7 @@ export const getTotalAmount = ({ cart }) =>
   );
 
 export const getRemarks = ({ cart }) =>
-  cart.products.map((product) => product.remarks);
+  cart.products.map((product) => ` ${product.name}: ${product.remarks} `);
 
 export const getOrderRemarks = ({ cart }) => cart.orderRemarks;
 
@@ -59,15 +59,16 @@ export default function cartReucer(statePart = [], action = {}) {
     }
 
     case UPDATE_PRODUCT: {
+      console.log(action.payload);
       // prettier-ignore
       return {
         ...statePart,
         products: statePart.products.map(product =>
-          product.name === action.payload.name ? {
+          product.name === action.payload.product.name ? {
             ...product,
-            qty: action.payload.qty,
-            price: action.payload.price * action.payload.qty,
-            remarks: action.payload.remarks
+            qty: product.qty + action.payload.product.qty,
+            price: action.payload.product.price,
+            remarks: action.payload.product.remarks
           }
             : product
         ),

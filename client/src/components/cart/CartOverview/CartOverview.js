@@ -3,43 +3,39 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   getAll,
   emptyCart,
-  getRemarks,
   updateRemarks,
 } from '../../../redux/cartRedux';
 import Button from '../../common/Button/Button';
 import { useEffect, useState } from 'react';
 
 import styles from './CartOverview.module.scss';
-import CartProductsTable from '../SingleCartProduct/SingleCartProduct';
 import ProductsSummary from '../ProductsSummary/ProductsSummary';
 import SingleCartProduct from '../SingleCartProduct/SingleCartProduct';
 
 const CartOverview = () => {
   const cartProducts = useSelector((state) => getAll(state));
-  const remarks = useSelector((state) => getRemarks(state));
-  const [updatedRemarks, setUpdatedRemarks] = useState(remarks);
+  const [orderRemarks, setOrderRemarks] = useState('');
   const dispatch = useDispatch();
-  console.log(cartProducts);
 
   useEffect(() => {
-    dispatch(updateRemarks(updatedRemarks));
-  }, [dispatch, updatedRemarks]);
+    dispatch(updateRemarks(orderRemarks));
+  }, [dispatch, orderRemarks]);
 
   const handleEmptyCart = () => {
     dispatch(emptyCart());
   };
 
-  // if (cartProducts.length === 0)
-  //   return (
-  //     <div className="container">
-  //       <h3>Your cart is empty. Please add first product</h3>
-  //       <Link to="/">Return to main page</Link>
-  //     </div>
-  //   );
+  if (cartProducts.length === 0)
+    return (
+      <div className="container">
+        <h3>Your cart is empty. Please add first product</h3>
+        <Link to="/">Return to main page</Link>
+      </div>
+    );
 
   return (
     <div>
-       <table className="table">
+      <table className="table">
         <thead>
           <tr>
             <th scope="col">Photo</th>
@@ -57,9 +53,9 @@ const CartOverview = () => {
       <textarea
         placeholder="Write your remarks here..."
         className={`w-75 ${styles.remarks}`}
-        value={updatedRemarks}
+        value={orderRemarks}
         onChange={(event) => {
-          setUpdatedRemarks(event.target.value);
+          setOrderRemarks(event.target.value);
         }}
       ></textarea>
       <ProductsSummary />

@@ -56,18 +56,18 @@ const ProductDetails = () => {
       price: productToShow?.price,
       qty: qty,
       remarks: remarks,
+      id: productToShow?.id,
     },
   };
 
   // add to cart: shake button, add product to cart, show flyout
   const addToCartHandler = (e) => {
     e.preventDefault();
-    console.log(cartProduct);
     setShake(true);
     setTimeout(() => setShake(false), 2000);
 
     // check if product is already in cart, if yes update cart, otherwise add to cart
-    allCartProducts.find((product) => product.name === cartProduct.name)
+    allCartProducts.find((product) => product.name === cartProduct.product.name)
       ? dispatch(updateProduct(cartProduct))
       : dispatch(addProduct(cartProduct));
 
@@ -126,7 +126,7 @@ const ProductDetails = () => {
                 name="qty"
                 value={qty}
                 onChange={(e) => {
-                  onChangeHandler(e.target.value, setQty);
+                  onChangeHandler(Number(e.target.value), setQty);
                 }}
                 className={styles.qtyInput}
               />
