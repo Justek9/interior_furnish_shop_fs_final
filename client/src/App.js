@@ -17,6 +17,7 @@ import CartOverview from './components/cart/CartOverview/CartOverview';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchProducts } from './redux/productsRedux';
+import AddressForm from './components/cart/AddressForm/AddressForm';
 
 function App() {
   const dispatch = useDispatch();
@@ -45,6 +46,7 @@ function App() {
           <Route path="/logout" element={<Logout />}></Route>
           <Route path="/cart" element={<CartOverview />}></Route>
         </Routes>
+        <AddressForm />
       </ContentContainer>
       <Footer />
     </PageContainer>

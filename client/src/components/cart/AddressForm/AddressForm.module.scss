@@ -1,0 +1,15 @@
+@import '../../../styles/settings.scss';
+
+.root {
+  .container {
+    width: 40%;
+  }
+}
+
+@media (max-width: 776px) {
+  .root {
+    .container {
+      width: 80%;
+    }
+  }
+}

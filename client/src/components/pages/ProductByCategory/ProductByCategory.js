@@ -42,7 +42,7 @@ const ProductByCategory = () => {
   return (
     <>
       <h2 className="mb-4">Show: {category}</h2>
-      <div className="d-flex flex-row flex-wrap justify-content-between">
+      <div className="d-flex flex-row flex-wrap justify-content-around">
         {productsToShow.map((product, i) => (
           <ProductBox key={i} product={product} />
         ))}
