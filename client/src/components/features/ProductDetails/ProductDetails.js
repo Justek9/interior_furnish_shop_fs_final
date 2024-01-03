@@ -83,7 +83,7 @@ const ProductDetails = () => {
   if (!productToShow) return <LoadingSpinner />;
 
   return (
-    <Container>
+    <Container className="d-flex flex-column flex-lg-row">
       <ShowGallerySlider id={id} />
       <div className={styles.card}>
         <Card.Body>

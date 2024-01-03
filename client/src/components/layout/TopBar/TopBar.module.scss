@@ -75,6 +75,11 @@
   .headerTop {
     .headerMenu {
       flex-direction: column;
+      .cart {
+        .cartQty {
+          right: 110px;
+        }
+      }
     }
   }
 }

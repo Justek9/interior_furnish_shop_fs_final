@@ -6,7 +6,7 @@ const Shop = () => {
   const products = useSelector((state) => getAllProducts(state));
 
   return (
-    <div className="d-flex flex-row flex-wrap justify-content-between">
+    <div className="d-flex flex-row flex-wrap justify-content-around">
       {products.map((product, i) => (
         <ProductBox key={i} product={product} />
       ))}
