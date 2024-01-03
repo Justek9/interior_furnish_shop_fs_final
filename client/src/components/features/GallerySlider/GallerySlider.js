@@ -4,9 +4,12 @@ import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { IMGS_URL } from '../../../config';
 
 import styles from './GallerySlider.module.scss';
+import { memoizedGetImgs } from '../../../redux/productsRedux';
+import { useSelector } from 'react-redux';
 
-const GallerySlider = ({ slides }) => {
+const GallerySlider = ({ id }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const slides = useSelector((state) => memoizedGetImgs(state, id));
 
   const goToNext = () => {
     const isFirstSlide = currentIndex === 0;

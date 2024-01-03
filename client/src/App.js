@@ -14,8 +14,15 @@ import Register from './components/pages/Register/Register';
 import ProductByCategory from './components/pages/ProductByCategory/ProductByCategory';
 import Logout from './components/pages/Logout/Logout';
 import CartOverview from './components/cart/CartOverview/CartOverview';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchProducts } from './redux/productsRedux';
 
 function App() {
+  const dispatch = useDispatch();
+
+  // fetch products from server and add them to redux state
+  useEffect(() => dispatch(fetchProducts()), [dispatch]);
   return (
     <PageContainer>
       <ContentContainer>

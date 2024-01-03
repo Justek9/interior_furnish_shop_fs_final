@@ -8,6 +8,7 @@ import Button from '../../common/Button/Button';
 import styles from './ProductBox.module.scss';
 
 const ProductBox = ({ product }) => {
+  
   const img = useSelector((state) => getMainIMG(state, product.id));
 
   return (

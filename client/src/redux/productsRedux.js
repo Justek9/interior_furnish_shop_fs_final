@@ -1,4 +1,5 @@
 import { API_URL } from '../config';
+import { createSelector } from 'reselect';
 
 // selectors
 export const getAllProducts = ({ products }) => {
@@ -12,6 +13,18 @@ export const getImgs = ({ products }, id) => {
 
   return imgs;
 };
+
+export const memoizedGetImgs = createSelector(
+  getAllProducts,
+  (_, id) => id,
+  (products, id) => {
+    const imgs = products
+      .filter((product) => product.id === id)
+      .flatMap((product) => product.imgs.map((img) => `${img.photo}`));
+
+    return imgs;
+  },
+);
 
 export const getMainIMG = ({ products }, id) => {
   const img = products

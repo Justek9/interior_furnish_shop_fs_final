@@ -59,7 +59,6 @@ export default function cartReucer(statePart = [], action = {}) {
     }
 
     case UPDATE_PRODUCT: {
-      console.log(action.payload);
       // prettier-ignore
       return {
         ...statePart,
@@ -97,10 +96,9 @@ export default function cartReucer(statePart = [], action = {}) {
 
     case EMPTY_CART: {
       return {
-        ...statePart,
         products: [],
-        totalAmount: 20,
-        totalQty: 0,
+        address: {},
+        orderRemarks: [],
       };
     }
 
@@ -110,6 +108,12 @@ export default function cartReucer(statePart = [], action = {}) {
         products: statePart.products.filter(
           (product) => product.name !== action.payload.name,
         ),
+        orderRemarks:
+          statePart.products.filter(
+            (product) => product.name !== action.payload.name,
+          ).length === 0
+            ? []
+            : statePart.orderRemarks,
       };
     }
 
