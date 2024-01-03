@@ -22,7 +22,7 @@ const ProductDetails = () => {
   const [qty, setQty] = useState(1);
   const [shake, setShake] = useState(false);
   const [showFlyer, setShowFlyer] = useState(false);
-  const [remarks, setRemarks] = useState('');
+  const [remarks, setRemarks] = useState("");
   const allCartProducts = useSelector((state) => getAll(state));
   const dispatch = useDispatch();
 

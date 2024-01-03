@@ -5,15 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
 const AddressForm = () => {
-  const [address, setAddress] = useState({
-    name: '',
-    lastName: '',
-    streetName: '',
-    streetNo: '',
-    flatNo: '',
-    postCode: '',
-    city: '',
-  });
+  const [address, setAddress] = useState({});
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -114,7 +106,7 @@ const AddressForm = () => {
           </div>
         </div>
         <div>
-          <Button text="Order" onClick={onClikHandler} type="submit" />
+          <Button text="Order" onClick={() => onClikHandler()} type="submit" />
         </div>
       </form>
     </div>

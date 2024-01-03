@@ -6,7 +6,8 @@ const initialState = {
   cart: {
     products: [],
     address: {},
-    orderRemarks: [],
+    orderRemarks: '',
+    shippingCost: 10,
   },
 };
 

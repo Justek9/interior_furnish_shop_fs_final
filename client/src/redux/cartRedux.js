@@ -13,9 +13,17 @@ export const getTotalAmount = ({ cart }) =>
       accumulator + currentValue.price * currentValue.qty,
     0,
   );
+export const getProductRemarks = ({ cart }) =>
+  // eslint-disable-next-line array-callback-return
+  cart.products.filter((product) => {
+    if (product.remarks !== '') return product.remarks;
+  });
 
-export const getRemarks = ({ cart }) =>
-  cart.products.map((product) => ` ${product.name}: ${product.remarks} `);
+export const getProductNamesAndRemarks = ({ cart }) =>
+  // eslint-disable-next-line array-callback-return
+  cart.products.map((product) => {
+    if (product.remarks !== '') return ` ${product.name}: ${product.remarks} `;
+  });
 
 export const getOrderRemarks = ({ cart }) => cart.orderRemarks;
 
@@ -79,7 +87,7 @@ export default function cartReucer(statePart = [], action = {}) {
       // prettier-ignore
       return {
         ...statePart,
-        orderRemarks: [action.payload],
+        orderRemarks: action.payload,
       };
     }
     case UPDATE_QTY: {

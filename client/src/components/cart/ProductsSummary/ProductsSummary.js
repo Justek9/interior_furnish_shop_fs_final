@@ -1,8 +1,6 @@
 import { useSelector } from 'react-redux';
 import { getTotalAmount, getTotalQty } from '../../../redux/cartRedux';
 
-import styles from './ProductsSummary.module.scss';
-
 const ProductsSummary = () => {
   const shippingCost = 10;
   const totalQty = useSelector((state) => getTotalQty(state));
@@ -10,19 +8,35 @@ const ProductsSummary = () => {
     useSelector((state) => getTotalAmount(state)) + shippingCost;
 
   return (
-    <div className="mt-4 mb-4">
-      <div className={`flex-center ${styles.shipping}`}>
-        <p>Shipping costs</p>
-        <p>$ {shippingCost}</p>
-      </div>
-      <div className={`flex-center ${styles.summary}`}>
-        <p>Total:</p>
-        <p>
-          {totalQty} <span>{totalQty > 1 ? 'pcs' : 'pc'}</span>
-        </p>
-        <p>$ {totalAmount}</p>
-      </div>
-    </div>
+    <table className="table">
+      <thead>
+        <tr>
+          <th scope="col">Summary</th>
+          <th scope="col">Qty</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Shipping costs</td>
+          <td>1</td>
+          <td>$10</td>
+        </tr>
+        <tr>
+          <td>
+            <b>Total cost</b>
+          </td>
+          <td>
+            <b>
+              {totalQty} <span>{totalQty > 1 ? 'pcs' : 'pc'}</span>
+            </b>
+          </td>
+          <td>
+            <b>$ {totalAmount}</b>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   );
 };
 
