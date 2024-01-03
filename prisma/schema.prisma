@@ -42,3 +42,32 @@ model Password {
   user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId   String @unique
 }
+
+model OrderProducts {
+  id String @id @default(uuid())
+  price Int
+  qty Int
+  name String
+   remarks String
+  orders ProductsOnOrders[]
+}
+
+
+model Order {
+  id String @id @default(uuid())
+  products ProductsOnOrders[]
+  address String @default("")
+  orderRemarks String
+  shippingCost Int
+  createdAt DateTime @default(now())
+
+
+}
+
+model ProductsOnOrders {
+  order Order @relation(fields: [orderId], references: [id])
+  orderId String // relation scalar field (used in the `@relation` attribute above)
+  product OrderProducts@relation(fields: [productId], references: [id])
+  productId String // relation scalar field (used in the `@relation` attribute above)
+  @@id([orderId, productId])
+}

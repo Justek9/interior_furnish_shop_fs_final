@@ -3,19 +3,70 @@ import Button from '../../common/Button/Button';
 import styles from './AddressForm.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { API_URL } from '../../../config';
 
 const AddressForm = () => {
-  const [address, setAddress] = useState({});
+  const [address, setAddress] = useState({
+    name: '',
+    lastName: '',
+    flatNo: '',
+    streetName: '',
+    streetNo: '',
+    postCode: '',
+    city: '',
+  });
+  const [status, setStatus] = useState(null);
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(addAddress(address));
   }, [dispatch, address]);
 
-  const order = useSelector(getCart);
+  const cart = useSelector(getCart);
+  console.log(cart.products);
 
-  const onClikHandler = () => {
-    console.log(order);
+  const orderProducts = cart.products.map((product) => {
+    return {
+      name: product.name,
+      price: product.price,
+      qty: product.qty,
+      remarks: product.remarks,
+    };
+  });
+
+  const onClikHandler = (e) => {
+    e.preventDefault();
+    const orderAddress = Object.values(address).toString();
+
+    const orderData = {
+      address: orderAddress,
+      products: orderProducts,
+      shippingCost: 10,
+      remarks: cart.orderRemarks.toString(),
+    };
+    const setSuccessStatusandNavigateToHomePage = () => {
+      setTimeout(() => {
+        setStatus('success');
+        // navigate('/');
+      }, 6000);
+    };
+
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(orderData),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    fetch(`${API_URL}/orders/create-order`, options)
+      .then((res) => {
+        if (res.status === 201) {
+          setSuccessStatusandNavigateToHomePage();
+        } else {
+          setStatus('serverError');
+        }
+      })
+      .catch(setStatus('serverError'));
   };
 
   return (
@@ -106,7 +157,11 @@ const AddressForm = () => {
           </div>
         </div>
         <div>
-          <Button text="Order" onClick={() => onClikHandler()} type="submit" />
+          <Button
+            text="Order"
+            onClick={(e) => onClikHandler(e)}
+            type="submit"
+          />
         </div>
       </form>
     </div>

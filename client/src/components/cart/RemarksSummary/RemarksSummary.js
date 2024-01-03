@@ -11,7 +11,6 @@ const RemarksSummary = () => {
   );
   const orderRemarks = useSelector((state) => getOrderRemarks(state));
   const productRemarks = useSelector((state) => getProductRemarks(state));
-  console.log(productRemarks);
 
   return (
     <>
