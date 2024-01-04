@@ -5,11 +5,12 @@ import {
   faShoppingBasket,
 } from '@fortawesome/free-solid-svg-icons';
 
-import styles from './TopBar.module.scss';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getUser } from '../../../redux/userRedux';
 import { getTotalQty } from '../../../redux/cartRedux';
+
+import styles from './TopBar.module.scss';
 
 const TopBar = () => {
   const user = useSelector((state) => getUser(state));

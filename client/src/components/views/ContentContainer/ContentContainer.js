@@ -1,4 +1,6 @@
 import { Container } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+
 import styles from './ContentContainer.module.scss';
 
 const ContentContainer = ({ children }) => {
@@ -6,3 +8,7 @@ const ContentContainer = ({ children }) => {
 };
 
 export default ContentContainer;
+
+ContentContainer.propTypes = {
+  children: PropTypes.array,
+};

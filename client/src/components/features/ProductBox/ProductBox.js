@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import { IMGS_URL } from '../../../config';
 import { getMainIMG } from '../../../redux/productsRedux';
 import Button from '../../common/Button/Button';
+import PropTypes from 'prop-types';
 
 import styles from './ProductBox.module.scss';
 
 const ProductBox = ({ product }) => {
-  
   const img = useSelector((state) => getMainIMG(state, product.id));
 
   return (
@@ -26,3 +26,7 @@ const ProductBox = ({ product }) => {
 };
 
 export default ProductBox;
+
+ProductBox.propTypes = {
+  product: PropTypes.object,
+};

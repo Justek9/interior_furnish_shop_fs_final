@@ -17,7 +17,6 @@ import CartOverview from './components/cart/CartOverview/CartOverview';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchProducts } from './redux/productsRedux';
-import AddressForm from './components/cart/AddressForm/AddressForm';
 import CartSummary from './components/cart/CartSummary/CartSummary';
 
 function App() {

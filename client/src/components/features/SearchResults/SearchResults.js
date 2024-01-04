@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { API_URL } from '../../../config';
 import SearchPage from '../../pages/SearchPage/SearchPage';
 import ProductBox from '../../features/ProductBox/ProductBox';

@@ -36,7 +36,7 @@ const ProductsSummary = () => {
             <b>
               {totalQty}
               <span>
-                {totalQty > 1 ? 'pcs' : 'pc'} $ {totalAmount}
+                {totalQty > 1 ? 'pcs' : 'pc'} ${totalAmount}
               </span>
             </b>
           </td>

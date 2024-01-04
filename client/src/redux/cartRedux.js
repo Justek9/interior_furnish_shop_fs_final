@@ -79,39 +79,43 @@ export default function cartReucer(statePart = [], action = {}) {
     }
 
     case UPDATE_PRODUCT: {
-      // prettier-ignore
       return {
         ...statePart,
-        products: statePart.products.map(product =>
-          product.name === action.payload.product.name ? {
-            ...product,
-            qty: product.qty + action.payload.product.qty,
-            price: action.payload.product.price,
-            remarks: action.payload.product.remarks
-          }
-            : product
+        products: statePart.products.map((product) =>
+          product.name === action.payload.product.name
+            ? {
+                ...product,
+                qty: product.qty + action.payload.product.qty,
+                price: action.payload.product.price,
+                remarks: action.payload.product.remarks,
+              }
+            : product,
         ),
-
       };
     }
 
     case UPDATE_REMARKS: {
-      // prettier-ignore
       return {
         ...statePart,
         orderRemarks: action.payload,
       };
     }
     case UPDATE_QTY: {
-      // prettier-ignore
       return {
         ...statePart,
-        products: statePart.products.map(product =>
-          product.name === action.payload.name ? {
-            ...product, qty: action.payload.qty}
-            : product
+        products: statePart.products.map((product) =>
+          product.name === action.payload.name
+            ? {
+                ...product,
+                qty: action.payload.qty,
+              }
+            : product,
         ),
       };
+    }
+
+    case UPDATE_DISCOUNT: {
+      return { ...statePart, discount: Number(action.payload) };
     }
 
     case EMPTY_CART: {
@@ -119,6 +123,8 @@ export default function cartReucer(statePart = [], action = {}) {
         products: [],
         address: {},
         orderRemarks: [],
+        discount: 0,
+        shippingCost: 10,
       };
     }
 
@@ -128,20 +134,11 @@ export default function cartReucer(statePart = [], action = {}) {
         products: statePart.products.filter(
           (product) => product.name !== action.payload.name,
         ),
-        orderRemarks:
-          statePart.products.filter(
-            (product) => product.name !== action.payload.name,
-          ).length === 0
-            ? []
-            : statePart.orderRemarks,
       };
     }
 
     case ADD_ADDRESS: {
       return { ...statePart, address: { ...action.payload } };
-    }
-    case UPDATE_DISCOUNT: {
-      return { ...statePart, discount: Number(action.payload) };
     }
 
     default:

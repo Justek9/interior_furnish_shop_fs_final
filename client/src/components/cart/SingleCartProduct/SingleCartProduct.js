@@ -1,5 +1,3 @@
-import styles from './SingleCartProduct.module.scss';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteProduct, updateQty } from '../../../redux/cartRedux';
 import { useEffect, useState } from 'react';
@@ -10,6 +8,9 @@ import {
 } from '../../../utils/utils';
 import { getMainIMG } from '../../../redux/productsRedux';
 import { IMGS_URL } from '../../../config';
+import PropTypes from 'prop-types';
+
+import styles from './SingleCartProduct.module.scss';
 
 const SingleCartProduct = ({ product }) => {
   const [qty, setQty] = useState(product.qty);
@@ -17,11 +18,12 @@ const SingleCartProduct = ({ product }) => {
 
   const dispatch = useDispatch();
 
+  // delete product from cart
   const handleDeleteProduct = () => {
     dispatch(deleteProduct(product));
   };
 
-  // update qty in order in redux
+  // update qty in order 
   useEffect(() => {
     dispatch(updateQty({ name: product.name, qty: qty }));
   }, [dispatch, product.name, qty]);
@@ -90,3 +92,7 @@ const SingleCartProduct = ({ product }) => {
 };
 
 export default SingleCartProduct;
+
+SingleCartProduct.propTypes = {
+  product: PropTypes.object.isRequired,
+};

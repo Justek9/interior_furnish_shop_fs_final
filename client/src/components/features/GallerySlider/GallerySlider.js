@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { IMGS_URL } from '../../../config';
+import { useSelector } from 'react-redux';
+import { memoizedGetImgs } from '../../../redux/productsRedux';
+import PropTypes from 'prop-types';
 
 import styles from './GallerySlider.module.scss';
-import { memoizedGetImgs } from '../../../redux/productsRedux';
-import { useSelector } from 'react-redux';
 
 const GallerySlider = ({ id }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -47,3 +48,7 @@ const GallerySlider = ({ id }) => {
 };
 
 export default GallerySlider;
+
+GallerySlider.propTypes = {
+  id: PropTypes.string.isRequired,
+};
