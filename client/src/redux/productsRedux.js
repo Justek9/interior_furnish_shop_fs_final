@@ -1,17 +1,11 @@
 import { API_URL } from '../config';
 import { createSelector } from 'reselect';
+import { setLoading } from './isLoadingRedux';
+import { setError } from './isErrorRedux';
 
 // selectors
 export const getAllProducts = ({ products }) => {
   return products;
-};
-
-export const getImgs = ({ products }, id) => {
-  const imgs = products
-    .filter((product) => product.id === id)
-    .flatMap((product) => product.imgs.map((img) => `${img.photo}`));
-
-  return imgs;
 };
 
 export const memoizedGetImgs = createSelector(
@@ -57,14 +51,20 @@ export const loadProducts = (payload) => ({ type: LOAD_PRODUCTS, payload });
 // fetch all products
 export const fetchProducts = () => {
   return (dispatch) => {
+    dispatch(setLoading(true));
+    dispatch(setError(false));
+
     fetch(`${API_URL}/products`)
       .then((res) => {
         return res.json();
       })
       .then((products) => {
+        dispatch(setLoading(false));
         dispatch(loadProducts(products));
       })
       .catch((error) => {
+        dispatch(setLoading(false));
+        dispatch(setError(true));
         console.log(error);
       });
   };

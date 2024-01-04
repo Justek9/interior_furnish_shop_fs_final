@@ -10,6 +10,7 @@ const Register = () => {
     passwordRepeat: '',
   });
   const [status, setStatus] = useState(null);
+  // null, "success", "error", "emailError"
 
   const registerHandler = (e) => {
     e.preventDefault();
@@ -24,16 +25,14 @@ const Register = () => {
       .then((res) => {
         if (res.status === 201) {
           setStatus('success');
-          setRegisterData({
-            email: '',
-            password: '',
-            passwordRepeat: '',
-          });
+          setRegisterData({ email: '', password: '', passwordRepeat: '' });
+        } else if (res.status === 409) {
+          setStatus('emailError');
         } else {
-          setStatus('serverError');
+          setStatus('error');
         }
       })
-      .catch(() => setStatus('serverError'));
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -47,7 +46,13 @@ const Register = () => {
         </Alert>
       )}
 
-      {status === 'serverError' && (
+      {status === 'emailError' && (
+        <Alert variant="danger">
+          <Alert.Heading>User with such email already exists</Alert.Heading>
+        </Alert>
+      )}
+
+      {status === 'error' && (
         <Alert variant="danger">
           <Alert.Heading>Something went wrong...</Alert.Heading>
           <p>Make sure all the fields are filled correctly and try again!</p>
@@ -78,7 +83,7 @@ const Register = () => {
               setRegisterData({ ...registerData, password: e.target.value })
             }
           />
-          <label>Password</label>
+          <label>Password (min. 5 characters)</label>
         </div>
         <div className="inputContainer">
           <input

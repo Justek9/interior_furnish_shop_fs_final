@@ -1,14 +1,13 @@
 import Shop from '../Shop/Shop';
+import LoadingSpinner from '../../common/LoadingSpinner/LoadingSpinner';
 
 import { useSelector } from 'react-redux';
-import { getIsError } from '../../../redux/isError';
-import { getIsLoading } from '../../../redux/isLoading';
-import LoadingSpinner from '../../common/LoadingSpinner/LoadingSpinner';
+import { getIsLoading } from '../../../redux/isLoadingRedux';
+import { getIsError } from '../../../redux/isErrorRedux';
 
 const Home = () => {
   const isLoading = useSelector((state) => getIsLoading(state));
   const isError = useSelector((state) => getIsError(state));
-
 
   return (
     <>

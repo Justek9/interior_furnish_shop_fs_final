@@ -9,7 +9,7 @@ import { Alert } from 'react-bootstrap';
 import { loginUser } from '../../../redux/userRedux';
 
 const Login = () => {
-  const [loginData, setLoginData] = useState({ login: '', password: '' });
+  const [loginData, setLoginData] = useState({ email: '', password: '' });
   const [status, setStatus] = useState(null);
   // null, 'loading', 'success', 'serverError', 'clientError'
 
@@ -91,16 +91,16 @@ const Login = () => {
             }
             required
           />
-          <label>Emai</label>
+          <label>Email</label>
         </div>
         <div className="inputContainer">
           <input
-            required
             type="password"
             value={loginData.password}
             onChange={(e) =>
               setLoginData({ ...loginData, password: e.target.value })
             }
+            required
           />
           <label>Password</label>
         </div>

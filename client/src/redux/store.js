@@ -1,12 +1,12 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import productsReducer from './productsRedux.js';
 
 import initialState from './initialState';
+import productsReducer from './productsRedux.js';
 import userReducer from './userRedux.js';
-import isloadingReducer from './isLoading.js';
-import isErrorReducer from './isError.js';
 import cartReucer from './cartRedux.js';
+import isloadingReducer from './isLoadingRedux';
+import isErrorReducer from './isErrorRedux';
 
 const subReducers = {
   products: productsReducer,

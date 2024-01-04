@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { API_URL } from '../../../config';
 import { addProduct, getAll, updateProduct } from '../../../redux/cartRedux';
+import { getIsError, setError } from '../../../redux/isErrorRedux';
+import { getIsLoading, setLoading } from '../../../redux/isLoadingRedux';
 import {
   decrementQty,
   incrementQty,
@@ -22,26 +24,34 @@ const ProductDetails = () => {
   const [qty, setQty] = useState(1);
   const [shake, setShake] = useState(false);
   const [showFlyer, setShowFlyer] = useState(false);
-  const [remarks, setRemarks] = useState("");
+  const [remarks, setRemarks] = useState('');
   const allCartProducts = useSelector((state) => getAll(state));
+  const isLoading = useSelector((state) => getIsLoading(state));
+  const isError = useSelector((state) => getIsError(state));
   const dispatch = useDispatch();
 
   // fetch product by id
   useEffect(() => {
     const fetchProductById = () => {
+      dispatch(setLoading(true));
+      dispatch(setError(false));
+
       fetch(`${API_URL}/products/${id}`)
         .then((res) => {
           return res.json();
         })
         .then((product) => {
+          dispatch(setLoading(false));
+
           setProductToShow(product);
         })
         .catch((error) => {
+          dispatch(setError(true));
           console.log(error);
         });
     };
     fetchProductById();
-  }, [id]);
+  }, [id, dispatch]);
 
   // show/hide input for remrks
   const handleShowRemarks = (e) => {
@@ -80,7 +90,8 @@ const ProductDetails = () => {
     setShowFlyer(false);
   };
 
-  if (!productToShow) return <LoadingSpinner />;
+  if (!productToShow || isLoading) return <LoadingSpinner />;
+  if (isError) return <p>Error occured while fetching data...</p>;
 
   return (
     <Container className="d-flex flex-column flex-lg-row justify-content-center align-items-center">
