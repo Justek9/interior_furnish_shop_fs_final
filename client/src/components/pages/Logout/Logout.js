@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { API_URL } from '../../../config'
 import { logOut } from '../../../redux/userRedux'
+import { updateDiscount } from '../../../redux/cartRedux'
 
 const Logout = () => {
 	const dispatch = useDispatch()
@@ -15,6 +16,8 @@ const Logout = () => {
 
 		fetch(`${API_URL}/auth/logout`, options).then(() => {
 			dispatch(logOut())
+			dispatch(updateDiscount(0));
+
 			navigate('/')
 		})
 	}, [dispatch, navigate])

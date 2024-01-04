@@ -40,7 +40,8 @@ const AddressForm = () => {
     const orderData = {
       address: orderAddress,
       products: orderProducts,
-      shippingCost: 10,
+      shippingCost: cart.shippingCost,
+      discount: cart.discount,
       remarks: cart.orderRemarks.toString(),
     };
     const setSuccessStatusandNavigateToHomePage = () => {

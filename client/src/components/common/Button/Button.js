@@ -1,9 +1,9 @@
 import styles from './Button.module.scss';
 
-const Button = ({ text, color, onClick, animation }) => {
+const Button = ({ text, color, onClick }) => {
   return (
     <button
-      className={`${styles.btn} ${animation ? styles.animate : ''}`}
+      className={styles.btn}
       style={{
         backgroundColor: color,
       }}

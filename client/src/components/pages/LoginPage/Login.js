@@ -7,6 +7,7 @@ import Button from '../../common/Button/Button';
 import LoadingSpinner from '../../common/LoadingSpinner/LoadingSpinner';
 import { Alert } from 'react-bootstrap';
 import { loginUser } from '../../../redux/userRedux';
+import { updateDiscount } from '../../../redux/cartRedux';
 
 const Login = () => {
   const [loginData, setLoginData] = useState({ email: '', password: '' });
@@ -42,6 +43,7 @@ const Login = () => {
       })
       .then((user) => {
         dispatch(loginUser(user));
+        dispatch(updateDiscount(10));
         setStatus('success');
         navigate('/');
       })

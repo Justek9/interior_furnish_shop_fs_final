@@ -48,7 +48,7 @@ model OrderProducts {
   price Int
   qty Int
   name String
-   remarks String
+  remarks String
   orders ProductsOnOrders[]
 }
 
@@ -60,8 +60,7 @@ model Order {
   orderRemarks String
   shippingCost Int
   createdAt DateTime @default(now())
-
-
+  discount Int @default(0)
 }
 
 model ProductsOnOrders {

@@ -56,7 +56,7 @@ const CartOverview = () => {
         }}
       ></textarea>
       <ProductsSummary />
-      <div className="flex-center justify-content-evenly">
+      <div className="d-flex flex-column align-items-center flex-lg-row justify-content-evenly">
         <Link to="/">
           <Button text="Close cart" color="#282828"></Button>
         </Link>

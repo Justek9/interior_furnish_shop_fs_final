@@ -8,6 +8,7 @@ const initialState = {
     address: {},
     orderRemarks: '',
     shippingCost: 10,
+    discount: 0,
   },
 };
 
