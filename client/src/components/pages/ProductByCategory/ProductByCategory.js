@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import {
   getAllProducts,
-  getCubes,
-  getNewProducts,
-  getShelves,
+  memoizedGetCubes,
+  memoizedGetNewProducts,
+  memoizedGetShelves,
 } from '../../../redux/productsRedux';
 import ProductBox from '../../features/ProductBox/ProductBox';
 
@@ -13,25 +13,25 @@ const ProductByCategory = () => {
   const { category } = useParams();
   const [productsToShow, setProductsToShow] = useState([]);
 
-  const products = useRef(useSelector((state) => getAllProducts(state)));
-  const newProducts = useRef(useSelector((state) => getNewProducts(state)));
-  const cubes = useRef(useSelector((state) => getCubes(state)));
-  const shelves = useRef(useSelector((state) => getShelves(state)));
+  const products = useSelector((state) => getAllProducts(state));
+  const newProducts = useSelector((state) => memoizedGetNewProducts(state));
+  const cubes = useSelector((state) => memoizedGetCubes(state));
+  const shelves = useSelector((state) => memoizedGetShelves(state));
 
   // Set productsToShow based on category
   useEffect(() => {
     switch (category) {
       case 'all':
-        setProductsToShow(products.current);
+        setProductsToShow(products);
         break;
       case 'new':
-        setProductsToShow(newProducts.current);
+        setProductsToShow(newProducts);
         break;
       case 'shelves':
-        setProductsToShow(shelves.current);
+        setProductsToShow(shelves);
         break;
       case 'cubes':
-        setProductsToShow(cubes.current);
+        setProductsToShow(cubes);
         break;
       default:
         setProductsToShow([]);

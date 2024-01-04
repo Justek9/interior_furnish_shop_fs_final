@@ -1,7 +1,9 @@
+import { createSelector } from 'reselect';
+
 /* selectors */
-export const getAll = ({ cart }) => cart.products;
 export const getCount = ({ cart }) => cart.products.length;
 export const getCart = ({ cart }) => cart;
+export const getAll = ({ cart }) => cart.products;
 export const getTotalQty = ({ cart }) =>
   cart.products.reduce(
     (accumulator, currentValue) => accumulator + currentValue.qty,
@@ -13,20 +15,25 @@ export const getTotalAmount = ({ cart }) =>
       accumulator + currentValue.price * currentValue.qty,
     0,
   );
-export const getProductRemarks = ({ cart }) =>
+
+export const memoizedGetProductRemarks = createSelector(getCart, (cart) =>
   // eslint-disable-next-line array-callback-return
   cart.products.filter((product) => {
     if (product.remarks !== '') return product.remarks;
-  });
+  }),
+);
 
-export const getProductNamesAndRemarks = ({ cart }) =>
-  // eslint-disable-next-line array-callback-return
-  cart.products.map((product) => {
-    if (product.remarks !== '') return ` ${product.name}: ${product.remarks} `;
-  });
+export const memoizedGetProductNamesAndRemarks = createSelector(
+  getCart,
+  (cart) =>
+    // eslint-disable-next-line array-callback-return
+    cart.products.map((product) => {
+      if (product.remarks !== '')
+        return ` ${product.name}: ${product.remarks} `;
+    }),
+);
 
 export const getOrderRemarks = ({ cart }) => cart.orderRemarks;
-
 export const getAddress = ({ cart }) => cart.address;
 
 /* action name creator */

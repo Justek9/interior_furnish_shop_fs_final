@@ -23,7 +23,6 @@ const AddressForm = () => {
   }, [dispatch, address]);
 
   const cart = useSelector(getCart);
-  console.log(cart.products);
 
   const orderProducts = cart.products.map((product) => {
     return {

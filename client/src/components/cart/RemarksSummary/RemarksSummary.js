@@ -1,16 +1,18 @@
 import { useSelector } from 'react-redux';
 import {
   getOrderRemarks,
-  getProductNamesAndRemarks,
-  getProductRemarks,
+  memoizedGetProductNamesAndRemarks,
+  memoizedGetProductRemarks,
 } from '../../../redux/cartRedux';
 
 const RemarksSummary = () => {
   const productsRemarksAndNames = useSelector((state) =>
-    getProductNamesAndRemarks(state),
+    memoizedGetProductNamesAndRemarks(state),
   );
   const orderRemarks = useSelector((state) => getOrderRemarks(state));
-  const productRemarks = useSelector((state) => getProductRemarks(state));
+  const productRemarks = useSelector((state) =>
+    memoizedGetProductRemarks(state),
+  );
 
   return (
     <>

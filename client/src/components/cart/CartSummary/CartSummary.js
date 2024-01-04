@@ -6,6 +6,7 @@ import RemarksSummary from '../RemarksSummary/RemarksSummary';
 const CartSummary = () => {
   return (
     <>
+      <h2>Cart summary</h2>
       <CartProductSummary />
       <RemarksSummary />
       <ProductsSummary />

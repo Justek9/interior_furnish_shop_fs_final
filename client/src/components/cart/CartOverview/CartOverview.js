@@ -1,10 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  getAll,
-  emptyCart,
-  updateRemarks,
-} from '../../../redux/cartRedux';
+import { getAll, emptyCart, updateRemarks } from '../../../redux/cartRedux';
 import Button from '../../common/Button/Button';
 import { useEffect, useState } from 'react';
 
@@ -35,6 +31,7 @@ const CartOverview = () => {
 
   return (
     <div>
+      <h2>Cart summary</h2>
       <table className="table">
         <thead>
           <tr>
