@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { API_URL } from '../../../config';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
 import Button from '../../common/Button/Button';
 import LoadingSpinner from '../../common/LoadingSpinner/LoadingSpinner';
 import { Alert } from 'react-bootstrap';
@@ -55,6 +54,7 @@ const Login = () => {
   return (
     <div className="flex-center flex-column">
       <h2>Log in</h2>
+      <p>Once logged in, you get 10% discount in cart</p>
       <form onSubmit={handleSubmit}>
         {status === 'success' && (
           <Alert variant="success">
@@ -108,6 +108,10 @@ const Login = () => {
         </div>
         <Button text="Login" />
       </form>
+      <p>
+        Still not registered? You can easily make up for it:
+        <Link to="/register"> register!</Link>
+      </p>
     </div>
   );
 };

@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { RegisterDTO } from './dtos/registerDTO.dto';
-import { JwtAuthGuard } from './jwt-auth.guard';
+// import { JwtAuthGuard } from './jwt-auth.guard';
 import { LocalAuthGuard } from './local-auth.guard';
 
 @Controller('auth')
@@ -29,7 +29,7 @@ export class AuthController {
     res.send(req.user);
   }
 
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @Delete('logout')
   async logout(@Response() res) {
     res.clearCookie('auth', { httpOnly: true });

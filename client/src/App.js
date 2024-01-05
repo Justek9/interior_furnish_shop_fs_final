@@ -9,7 +9,6 @@ import SearchPage from './components/pages/SearchPage/SearchPage';
 import SearchResults from './components/features/SearchResults/SearchResults';
 import ProductDetails from './components/features/ProductDetails/ProductDetails';
 import Contact from './components/pages/Contact/Contact';
-import Login from './components/pages/LoginPage/Login';
 import Register from './components/pages/Register/Register';
 import ProductByCategory from './components/pages/ProductByCategory/ProductByCategory';
 import Logout from './components/pages/Logout/Logout';
@@ -18,6 +17,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchProducts } from './redux/productsRedux';
 import CartSummary from './components/cart/CartSummary/CartSummary';
+import Login from './components/pages/Login/Login';
 
 function App() {
   const dispatch = useDispatch();

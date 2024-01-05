@@ -47,7 +47,7 @@ const SearchResults = () => {
       <SearchPage />
       <h2 className="mb-4">Show: {searchPhrase}</h2>
       {status === 'clientError' && (
-        <p>Nothing matches your search results. Try again!</p>
+        <p>Nothing matches your search phrase. Try again!</p>
       )}
       {status === 'success' && (
         <div className="d-flex flex-row flex-wrap justify-content-evenly">
