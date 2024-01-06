@@ -5,10 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { API_URL } from '../../../config';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { Alert } from 'react-bootstrap';
 
 import styles from './AddressForm.module.scss';
-import { Alert } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
 
 const AddressForm = () => {
   const cart = useSelector(getCart);
@@ -23,7 +23,7 @@ const AddressForm = () => {
   });
   const [status, setStatus] = useState(null);
   // null, success, serverError
-  console.log(status);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -36,7 +36,7 @@ const AddressForm = () => {
 
   // save address in redux
   useEffect(() => {
-    dispatch(addAddress(address));
+    dispatch(addAddress({...address}));
   }, [dispatch, address]);
 
   // build order products

@@ -12,6 +12,7 @@ const Login = () => {
   const [loginData, setLoginData] = useState({ email: '', password: '' });
   const [status, setStatus] = useState(null);
   // null, 'loading', 'success', 'serverError', 'clientError'
+  // console.log(document.cookie);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -20,6 +21,9 @@ const Login = () => {
     e.preventDefault();
     const options = {
       method: 'POST',
+      credentials: 'include',
+      mode: 'cors',
+
       headers: {
         'Content-Type': 'application/json',
       },
@@ -41,10 +45,11 @@ const Login = () => {
         }
       })
       .then((user) => {
-        dispatch(loginUser(user));
+        dispatch(loginUser({ id: user.id }));
         dispatch(updateDiscount(10));
-        setStatus('success');
-        navigate('/');
+        setTimeout(() => {
+          navigate('/');
+        }, 3000);
       })
       .catch(() => {
         setStatus('serverError');

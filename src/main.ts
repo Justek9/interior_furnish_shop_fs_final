@@ -14,10 +14,11 @@ async function bootstrap() {
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });
+  app.use(cookieParser());
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
   app.setGlobalPrefix('api');
   app.use('/assets', express.static('assets'));
-  app.use(cookieParser());
+
   await app.enableShutdownHooks();
   await app.listen(configService.get('port'));
 }
