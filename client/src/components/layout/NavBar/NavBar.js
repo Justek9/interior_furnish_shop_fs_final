@@ -5,7 +5,7 @@ import { Navbar } from 'react-bootstrap';
 
 const NavBar = () => {
   return (
-    <Navbar expand="lg" className="my-3 my-lg-4 px-4 px-lg-5 flex-column">
+    <Navbar expand="lg" className="my-3 my-lg-4 px-4 px-lg-5 flex-lg-column">
       <Navbar.Toggle aria-controls="responsive-nav" />
       <Navbar.Collapse
         id="responsive-nav"

@@ -1,14 +1,15 @@
-import { addAddress, emptyCart, getCart } from '../../../redux/cartRedux';
 import Button from '../../common/Button/Button';
 import Form from 'react-bootstrap/Form';
+import { addAddress, emptyCart, getCart } from '../../../redux/cartRedux';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { API_URL } from '../../../config';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { Alert } from 'react-bootstrap';
 
 import styles from './AddressForm.module.scss';
+import { setConstantValue } from 'typescript';
 
 const AddressForm = () => {
   const cart = useSelector(getCart);
@@ -24,6 +25,8 @@ const AddressForm = () => {
   const [status, setStatus] = useState(null);
   // null, success, serverError
 
+  const lName = useRef('');
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -32,11 +35,13 @@ const AddressForm = () => {
     register,
     handleSubmit: validate,
     formState: { errors },
+    setValue,
   } = useForm();
 
   // save address in redux
   useEffect(() => {
-    dispatch(addAddress({...address}));
+    setValue('lastName', lName.current.value);
+    dispatch(addAddress({ ...address }));
   }, [dispatch, address]);
 
   // build order products
@@ -130,6 +135,7 @@ const AddressForm = () => {
             type="text"
             placeholder="Enter last name"
             autoComplete="on"
+            ref={lName}
           />
           {errors.lastName && (
             <small className="d-block form-text text-danger mt-2">

@@ -18,12 +18,14 @@ import { useEffect } from 'react';
 import { fetchProducts } from './redux/productsRedux';
 import CartSummary from './components/cart/CartSummary/CartSummary';
 import Login from './components/pages/Login/Login';
+import NotFound from './components/pages/NotFound/NotFound';
 
 function App() {
   const dispatch = useDispatch();
 
   // fetch products from server and add them to redux state
   useEffect(() => dispatch(fetchProducts()), [dispatch]);
+
   return (
     <PageContainer>
       <ContentContainer>
@@ -46,6 +48,7 @@ function App() {
           <Route path="/logout" element={<Logout />}></Route>
           <Route path="/cart" element={<CartOverview />}></Route>
           <Route path="/cart-summary" element={<CartSummary />}></Route>
+          <Route path="/*" element={<NotFound />}></Route>
         </Routes>
       </ContentContainer>
       <Footer />
