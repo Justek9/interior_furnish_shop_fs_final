@@ -2,7 +2,7 @@ import { Alert } from 'react-bootstrap';
 import { useState } from 'react';
 import { API_URL } from '../../../config';
 import Button from '../../common/Button/Button';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
   const [registerData, setRegisterData] = useState({
@@ -12,14 +12,6 @@ const Register = () => {
   });
   const [status, setStatus] = useState(null);
   // null, "success", "error", "emailError"
-
-  const navigate = useNavigate();
-  const clearStatusandNavigateToLgin = () => {
-    setTimeout(() => {
-      setStatus(null);
-      navigate('/login');
-    }, 2000);
-  };
 
   const registerHandler = (e) => {
     e.preventDefault();
@@ -41,7 +33,6 @@ const Register = () => {
           setStatus('error');
         }
       })
-      .then(clearStatusandNavigateToLgin())
       .catch((err) => console.log(err));
   };
 
@@ -51,7 +42,12 @@ const Register = () => {
       {status === 'success' && (
         <Alert variant="success">
           <Alert.Heading>
-            Success! User was successfully registered.
+            Success! User was successfully registered. You can now log in.
+            <p>
+              <u>
+                <Link to="/login">Login</Link>
+              </u>
+            </p>
           </Alert.Heading>
         </Alert>
       )}
