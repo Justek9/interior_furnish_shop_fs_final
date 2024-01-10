@@ -1,39 +1,39 @@
 @import '../../../styles/settings.scss';
 
-.cartIMG {
-  height: 30px;
-  width: 50px;
-}
-
-.qtyInput {
-  width: 50px;
-  text-align: center;
-  padding: 0.3rem;
-  border: 1px solid black;
-
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-  }
-  &:focus {
-    outline-color: $color-primary;
-  }
-}
-
-.qtyBtn {
-  border: none;
-  background-color: white;
-  color: $color-primary;
-  font-size: 1.5rem;
-  padding: 0.5rem;
-}
-
 .row {
   vertical-align: middle;
-}
 
-.deleteBtn {
-  border: none;
-  color: $color-primary;
-  background-color: $color-text-light;
-  font-size: 0.8rem;
+  .cartIMG {
+    height: 30px;
+    width: 50px;
+  }
+
+  .qtyInput {
+    width: 50px;
+    text-align: center;
+    padding: 0.3rem;
+    border: 1px solid black;
+
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+    &:focus {
+      outline-color: $color-primary;
+    }
+  }
+
+  .qtyBtn {
+    border: none;
+    background-color: $color-background;
+    color: $color-primary;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+  }
+
+  .deleteBtn {
+    border: none;
+    color: $color-primary;
+    background-color: $color-text-light;
+    font-size: 0.8rem;
+  }
 }

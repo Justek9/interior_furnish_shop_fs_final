@@ -12,7 +12,6 @@ const Login = () => {
   const [loginData, setLoginData] = useState({ email: '', password: '' });
   const [status, setStatus] = useState(null);
   // null, 'loading', 'success', 'serverError', 'clientError'
-  // console.log(document.cookie);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();

@@ -9,7 +9,6 @@ import { useNavigate } from 'react-router-dom';
 import { Alert } from 'react-bootstrap';
 
 import styles from './AddressForm.module.scss';
-import { setConstantValue } from 'typescript';
 
 const AddressForm = () => {
   const cart = useSelector(getCart);
@@ -25,7 +24,14 @@ const AddressForm = () => {
   const [status, setStatus] = useState(null);
   // null, success, serverError
 
-  const lName = useRef('');
+  // add ref to inputs to hadle autocomplete
+  const firstName = useRef('');
+  const surname = useRef('');
+  const flatNumber = useRef('');
+  const street = useRef('');
+  const streetNumber = useRef('');
+  const postal = useRef('');
+  const cityName = useRef('');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -38,11 +44,19 @@ const AddressForm = () => {
     setValue,
   } = useForm();
 
-  // save address in redux
+  // save address in redux and handle autocomplete
   useEffect(() => {
-    setValue('lastName', lName.current.value);
+    // handle autocomplete
+    setValue('lastName', surname.current.value);
+    setValue('name', firstName.current.value);
+    setValue('flatNo', flatNumber.current.value);
+    setValue('streetName', street.current.value);
+    setValue('streetNo', streetNumber.current.value);
+    setValue('postCode', postal.current.value);
+    setValue('city', cityName.current.value);
+    // save address in redux
     dispatch(addAddress({ ...address }));
-  }, [dispatch, address]);
+  }, [dispatch, address, setValue]);
 
   // build order products
   const orderProducts = cart.products.map((product) => {
@@ -116,6 +130,7 @@ const AddressForm = () => {
             type="text"
             placeholder="Enter name"
             autoComplete="on"
+            ref={firstName}
           />
           {errors.name && (
             <small className="d-block form-text text-danger mt-2">
@@ -135,7 +150,7 @@ const AddressForm = () => {
             type="text"
             placeholder="Enter last name"
             autoComplete="on"
-            ref={lName}
+            ref={surname}
           />
           {errors.lastName && (
             <small className="d-block form-text text-danger mt-2">
@@ -154,6 +169,7 @@ const AddressForm = () => {
             type="text"
             placeholder="Enter street name"
             autoComplete="on"
+            ref={street}
           />
           {errors.streetName && (
             <small className="d-block form-text text-danger mt-2">
@@ -172,6 +188,7 @@ const AddressForm = () => {
             type="number"
             placeholder="Enter street no"
             autoComplete="on"
+            ref={streetNumber}
           />
           {errors.streetNo && (
             <small className="d-block form-text text-danger mt-2">
@@ -188,6 +205,7 @@ const AddressForm = () => {
             type="number"
             placeholder="Enter flat no"
             autoComplete="on"
+            ref={flatNumber}
           />
           {errors.flatNo && (
             <small className="d-block form-text text-danger mt-2">
@@ -206,6 +224,7 @@ const AddressForm = () => {
             type="number"
             placeholder="Enter post code"
             autoComplete="on"
+            ref={postal}
           />
           {errors.postCode && (
             <small className="d-block form-text text-danger mt-2">
@@ -222,6 +241,7 @@ const AddressForm = () => {
             type="text"
             placeholder="Enter city"
             autoComplete="on"
+            ref={cityName}
           />
           {errors.city && (
             <small className="d-block form-text text-danger mt-2">

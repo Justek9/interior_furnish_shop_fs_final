@@ -6,9 +6,20 @@ $color-text-light: rgb(255, 255, 255);
 $color-text-light-gray: rgb(204, 198, 198);
 $color-white-smoke: rgb(245, 245, 245);
 $color-text-dark: rgb(40, 40, 40);
+$arrow-background:  rgb(255, 255, 255, 0.5);
 
 $font-family: 'Nunito', sans-serif;
 
 $radius: 5px;
 $transition: all 0.5s;
-$transition-flyer:all 250ms ease-in
+$transition-flyer: all 250ms ease-in;
+
+// key frame for loading spinner
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

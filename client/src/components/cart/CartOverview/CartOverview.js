@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
 import { getAll, emptyCart, updateRemarks } from '../../../redux/cartRedux';
 import Button from '../../common/Button/Button';
-import { useEffect, useState } from 'react';
-
-import styles from './CartOverview.module.scss';
 import ProductsSummary from '../ProductsSummary/ProductsSummary';
 import SingleCartProduct from '../SingleCartProduct/SingleCartProduct';
+
+import styles from './CartOverview.module.scss';
 
 const CartOverview = () => {
   const cartProducts = useSelector((state) => getAll(state));
@@ -43,7 +43,7 @@ const CartOverview = () => {
         </thead>
         <tbody>
           {cartProducts.map((product, i) => (
-            <SingleCartProduct key={i} product={product} />
+            <SingleCartProduct key={product.id} product={product} />
           ))}
         </tbody>
       </table>
